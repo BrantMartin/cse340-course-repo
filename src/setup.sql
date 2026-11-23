@@ -1,10 +1,10 @@
-DROP TABLE IF EXISTS organization;
+DROP TABLE IF EXISTS organization CASCADE;
 
-DROP TABLE IF EXISTS service_project;
+DROP TABLE IF EXISTS service_project CASCADE;
 
-DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS category CASCADE;
 
-DROP TABLE IF EXISTS service_project_category;
+DROP TABLE IF EXISTS service_project_category CASCADE;
 
 -- ========================================
 -- Organization Table

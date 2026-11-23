@@ -1,13 +1,11 @@
 <%- include('partials/header') %>
 <main>
-	<h1><%= title %></h1>
-	<!-- Put your page-specific content here -->
-	<h2>Upcoming Service Projects</h2>
-	 <% projects.forEach(project => { %>
-		<h3><%= projects.title %></h3>	
-		<p><%= projects.description %></p>	
-		<p><%= projects.location %></p>	
-		<p><%= projects.project_date %></p>	
-	<% }); %>
+  <h1><%= title %></h1>
+  <!-- Put your page-specific content here -->
+  <ul>
+    <% projects.forEach(project => { %>
+    <li><%= project.project_date %>: <%= project.title %> (<%= project.organization_name %>)</li>
+    <% }); %>
+  </ul>
 </main>
 <%- include('partials/footer') %>

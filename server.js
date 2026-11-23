@@ -4,6 +4,7 @@ import path from "path";
 import { testConnection } from "./src/models/db.js";
 import { getAllOrganizations } from "./src/models/organizations.js";
 import { getAllCategories } from "./src/models/categories.js";
+import { getAllProjects } from "./src/models/projects.js";
 
 // Define the application environment
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || "production";
@@ -46,7 +47,7 @@ app.get("/organizations", async (req, res) => {
 });
 
 app.get("/projects", async (req, res) => {
-	const projects = await getAllCategories();
+	const projects = await getAllProjects();
 	console.log(projects)
 
 	const title = "Service Projects";
