@@ -1,6 +1,9 @@
 DROP TABLE IF EXISTS organization;
+
 DROP TABLE IF EXISTS service_project;
+
 DROP TABLE IF EXISTS category;
+
 DROP TABLE IF EXISTS service_project_category;
 
 -- ========================================
@@ -17,12 +20,13 @@ CREATE TABLE organization (
 -- ========================================
 -- Service Projects Table
 -- ========================================
-
 CREATE TABLE service_project (
     service_project_id SERIAL PRIMARY KEY,
     organization_id INT NOT NULL REFERENCES organization (organization_id),
     title VARCHAR(150) NOT NULL,
-    description TEXT NOT NULL
+    description TEXT NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    project_date DATE NOT NULL
 );
 
 -- ========================================
@@ -83,3 +87,90 @@ VALUES
     ('Animal Welfare'),
     ('Arts & Culture'),
     ('Disaster Relief');
+
+
+-- ========================================
+-- Insert sample data: Service Projects
+-- ========================================
+INSERT INTO
+    service_project (
+        organization_id,
+        title,
+        description,
+        location,
+        project_date
+    )
+VALUES
+    -- BrightFuture Builders (organization_id = 1)
+    (
+        1,
+        'Community Playground Build',
+        'Volunteers will assemble a new playground using recycled and sustainable materials for a neighborhood park.',
+        'Riverside Park, 120 River St',
+        '2026-12-05'
+    ),
+    (
+        1,
+        'Bus Stop Shelter Restoration',
+        'Repair and repaint aging bus shelters to make public transit safer and more comfortable.',
+        'Downtown Transit Center',
+        '2027-01-16'
+    ),
+    (
+        1,
+        'Home Weatherization Day',
+        'Help seniors seal windows and doors and install insulation before the coldest months.',
+        'Maple Heights Neighborhood',
+        '2026-12-12'
+    ),
+    -- GreenHarvest Growers (organization_id = 2)
+    (
+        2,
+        'Urban Garden Planting Day',
+        'Plant vegetables and herbs in raised beds that supply fresh produce to local families.',
+        'Oak Street Community Garden',
+        '2027-03-20'
+    ),
+    (
+        2,
+        'Composting Workshop',
+        'A hands-on class teaching residents how to start composting at home and reduce food waste.',
+        'GreenHarvest Education Center',
+        '2027-02-07'
+    ),
+    (
+        2,
+        'School Garden Mentorship',
+        'Volunteers help students plant, tend, and harvest a school garden while learning about nutrition.',
+        'Lincoln Elementary School',
+        '2027-04-10'
+    ),
+    -- UnityServe Volunteers (organization_id = 3)
+    (
+        3,
+        'Neighborhood Food Drive',
+        'Collect and sort non-perishable food donations for distribution to local food pantries.',
+        'UnityServe Warehouse, 45 Commerce Ave',
+        '2026-12-19'
+    ),
+    (
+        3,
+        'Shelter Pet Adoption Fair',
+        'Help set up and run an adoption event connecting rescue animals with loving homes.',
+        'Central Fairgrounds',
+        '2027-02-21'
+    ),
+    (
+        3,
+        'Community Health Fair',
+        'Support free health screenings and wellness education for local residents.',
+        'Westside Community Center',
+        '2027-03-06'
+    ),
+    (
+        3,
+        'Storm Relief Supply Packing',
+        'Assemble and pack emergency supply kits for families affected by recent severe weather.',
+        'UnityServe Warehouse, 45 Commerce Ave',
+        '2027-01-30'
+    );
